@@ -124,6 +124,7 @@ Here is the oputput (with TRC):
 4 4
 5
 -------------- (32 lines done) - Code:
+
  1  JMP .BEGIN
  2  IF B < C B = B + 1
  3  PRN B S
