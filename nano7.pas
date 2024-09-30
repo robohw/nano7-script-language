@@ -1,4 +1,4 @@
-program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP  
+program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP  
 {$MODE FPC}    // RET implanted, GetVal speedUp, Arr.limit = 32767, project closed. 
  
  uses SysUtils;      
