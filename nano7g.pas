@@ -33,8 +33,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  procedure Split(inStr: string);
- var
-   i, Index: byte;
+ var i, Index: byte;
  begin
  Index := 0;
  SetLength(Tokens, 1);
@@ -55,8 +54,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  procedure SetLabelAddr(const Name: string; Addr: Word);
- var
-   i: Integer;
+ var i: Integer;
  begin
    for i := 2 to length(name) do
      if not (name[i] in ['A'..'Z','_']) then error('illegal char in LABEL '+name);   
@@ -68,8 +66,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  function GetLabelAddr(const Name: string): Word;
- var
-   i: Integer;
+ var i: Integer;
  begin
    if(Name[1] <> '.') then Error('missing dot (label)');
    GetLabelAddr := 0;  
@@ -78,8 +75,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  function ExtractIndex(s: string): word;  // for PRN instruction
- var
-  i: Word;
+ var i: Word;
  begin
   s := Copy(s, 3, Length(s) - 2);  
   if (Length(s) = 1) and (s[1] in ['B'..'Z']) then i := Vars[s[1]] else i := StrToIntDef(s, -1);  
@@ -97,8 +93,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  function GetVal(n: Byte): LongInt;
- var
-   i: LongInt;
+ var i: LongInt;
  begin   
    if (tokens[n][1]in['B'..'Z'])and (Length(tokens[n])>1)then Error('Invalid ID: '+tokens[n]);
    if (tokens[n][1] in ['-','0'..'9']) then
@@ -130,8 +125,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end; 
 
  function Input(n: byte): longint;
- var
- inStr: string;
+ var inStr: string;
  begin
    repeat
      write(tokens[n],': ');
@@ -141,9 +135,8 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  procedure SetVal(n: Byte);
- var
-  value: LongInt;
-  i: Integer;
+ var value: LongInt;
+         i: Integer;
  begin
   if not (tokens[n][1]   in ['A'..'Z'])    then Error('Invalid var ID: ' + tokens[n]);
   if not (tokens[n+1][1] in ['=','+','-']) then Error('syntax error: ' + tokens[n+1]);
@@ -228,9 +221,8 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  procedure LoadProgram;
- var
-   i: byte;
-   Line: string;
+ var i: byte;
+  Line: string;
  begin
    for i:= Ord('B') to Ord('Z') do vars[Chr(i)]:= -2147483648;
    Randomize;
@@ -261,8 +253,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  procedure PrintState;
- var
-   i: Integer;
+ var i: Integer;
  begin
    Writeln(OutFile);
    Writeln(OutFile,'-------------- (', Counter, ' lines done) - Code:');
