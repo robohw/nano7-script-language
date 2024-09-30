@@ -84,8 +84,7 @@ program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  function GetIndex(s: string): word;
- var
-   i: Word;
+ var i: Word;
  begin
    i := ExtractIndex(s);
    if (i >= Length(Ar)) then SetLength(Ar, i + 1); 
