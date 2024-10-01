@@ -1,0 +1,15 @@
+23 
+-------------- (3 lines done) - Code:
+ 1  A.0 = INP
+ 2  PRN A.0 S
+ 3  IF A.0 < 10 JMP .LOOP
+
+-------------- Label(s):
+.LOOP	1
+
+-------------- Vars (B..Z):
+R 100
+S 32
+T 10
+-------------- Array element(s):
+A.0 = 23

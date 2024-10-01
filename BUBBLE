@@ -1,0 +1,37 @@
+; SIMPLE BUBBLE SORT
+; THE RESULT IS IN THE
+; OUTPUT FILE: BUBBLE.OUT
+; AT THE END OF THE FILE
+
+TRC
+
+A.0 = 34     ; ARRAY ELEMENT
+A.1 = 13
+A.2 = 29
+A.3 = 67
+A.4 = 5
+
+N = 5        ; array size
+T = 13       ; LINE FEED
+I = 0
+
+.NEXT
+  J = 0
+  M = N - 1
+  M = M - I
+
+  .INNER
+    K = J
+    K +
+    IF A.J < A.K JMP .NOSWAP  
+    IF A.J = A.K JMP .NOSWAP  
+    Q = A.J
+    A.J = A.K
+    A.K = Q
+
+  .NOSWAP
+    J +
+    IF J < M JMP .INNER
+    I +
+    IF I < N JMP .NEXT
+

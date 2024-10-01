@@ -1,0 +1,46 @@
+
+-------------- (112 lines done) - Code:
+ 1  A.0 = 34
+ 2  A.1 = 13
+ 3  A.2 = 29
+ 4  A.3 = 67
+ 5  A.4 = 5
+ 6  N = 5
+ 7  T = 13
+ 8  I = 0
+ 9  J = 0
+10  M = N - 1
+11  M = M - I
+12  K = J
+13  K +
+14  IF A.J < A.K JMP .NOSWAP
+15  IF A.J = A.K JMP .NOSWAP
+16  Q = A.J
+17  A.J = A.K
+18  A.K = Q
+19  J +
+20  IF J < M JMP .INNER
+21  I +
+22  IF I < N JMP .NEXT
+
+-------------- Label(s):
+.NEXT	9
+.INNER	12
+.NOSWAP	19
+
+-------------- Vars (B..Z):
+I 5
+J 1
+K 1
+M 0
+N 5
+Q 13
+R 100
+S 32
+T 13
+-------------- Array element(s):
+A.0 = 5
+A.1 = 13
+A.2 = 29
+A.3 = 34
+A.4 = 67

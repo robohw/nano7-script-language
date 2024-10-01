@@ -1,0 +1,12 @@
+; INCREMENT THE VALUE
+; OF AN ARRAY ELEMENT
+
+TRC
+
+A.4 = 1
+A.4 + 
+A.4 + 
+PRN A.4
+
+
+ 

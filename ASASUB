@@ -1,0 +1,22 @@
+; STUPID SUB DEMO 
+; ---------------
+TRC
+JMP .BEGIN
+
+.SUBINC
+ IF B < C  B +
+ PRN B S
+RET
+
+.BEGIN
+ B = 1
+ C = 5
+ S = 32
+ T = 10
+
+.LOOP
+ JMP .SUBINC
+ IF B = C JMP .END
+ JMP .LOOP
+
+.END

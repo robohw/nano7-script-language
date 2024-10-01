@@ -1,0 +1,37 @@
+A B C D E F G H 
+I J K L M N O P 
+Q R S T U V W X 
+Y Z [ \ ] ^ _ ` 
+a b c d e f g h 
+i j k l m n o p 
+q r s t u v w x 
+y z { | } ~ 
+
+-------------- (339 lines done) - Code:
+ 1  B = 1
+ 2  M = 127
+ 3  U = 65
+ 4  JMP .LOOP
+ 5  B = 0
+ 6  PRN T
+ 7  RET
+ 8  PRN U S
+ 9  IF B = 8 JMP .SUB
+10  U +
+11  B +
+12  IF U < M JMP .LOOP
+13  JMP .SUB
+
+-------------- Label(s):
+.SUB	5
+.LOOP	8
+
+-------------- Vars (B..Z):
+B 0
+M 127
+R 100
+S 32
+T 10
+U 127
+-------------- Array element(s):
+A.0 = 0

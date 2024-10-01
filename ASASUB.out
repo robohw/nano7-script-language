@@ -1,0 +1,28 @@
+2 3 4 5 
+-------------- (28 lines done) - Code:
+ 1  JMP .BEGIN
+ 2  IF B < C  B +
+ 3  PRN B S
+ 4  RET
+ 5  B = 1
+ 6  C = 5
+ 7  S = 32
+ 8  T = 10
+ 9  JMP .SUBINC
+10  IF B = C JMP .END
+11  JMP .LOOP
+
+-------------- Label(s):
+.SUBINC	2
+.BEGIN	5
+.LOOP	9
+.END	12
+
+-------------- Vars (B..Z):
+B 5
+C 5
+R 100
+S 32
+T 10
+-------------- Array element(s):
+A.0 = 0
