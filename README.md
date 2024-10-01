@@ -1,3 +1,5 @@
+![](nano7.gif)
+
 The **nano7** language is a simple, embeddable,  procedural language (interpreter). The language has only global variables and integer arithmetic. Nano7 uses built-in variables. 
 Their scope is global. Variables are identified by the English ABC letters ("A","B","C" .."Z").
 
