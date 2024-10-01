@@ -74,8 +74,8 @@ Jump instruction that must be followed by a tag that the interpreter detected an
 Syntax: **JMP .LABEL_ONE**  
 
 **RET**  
-This is the additional (RETurn) statement for labels. If this is included in one of the lines after the label, then after the RET line, the code execution returns to the line+1 where it was before jumping to the label. Thus, lines written between a LABEL and a RET instruction become a subroutine.
-****
+This is the additional (RETurn) statement for labels. If this is included in one of the lines after the label, then after the RET line, the code execution returns to the line+1 where it was before jumping to the label. Thus, lines written between a LABEL and a RET instruction become a subroutine.  
+
 Syntax:
 
 .SUB_LABEL  
