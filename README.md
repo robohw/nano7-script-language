@@ -107,23 +107,23 @@ A.B = INP
 
 JMP .BEGIN
 
-.SUB_INC 
- IF B < C B = B + 1 
- PRN B S 
- RET
+.SUB_INC   
+ IF B < C B = B + 1   
+ PRN B S   
+ RET  
 
-.BEGIN 
- B = 1 
- C = 5 
- S = 32 
- T = 10
-
-.LOOP 
- JMP .SUB_INC 
- IF B = C JMP .END 
- JMP .LOOP
-.END
-
+.BEGIN   
+ B = 1  
+ C = 5   
+ S = 32  
+ T = 10  
+   
+.LOOP   
+ JMP .SUB_INC   
+ IF B = C JMP .END  
+ JMP .LOOP  
+.END  
+  
 **Here is the oputput (with TRC):
 **
 
