@@ -23,11 +23,12 @@ By default, this maximum value is 100, and the largest number that can be genera
 
 "**S**".."**Z**" stores a single 1-byte integer value. when printing, the PRN instruction evaluates the stored value as an ASCII code.
 
-Arithmetic and logical operators:
+**Arithmetic and logical operators:
+**
 
-  (add) 
-- (sub) 
-* (mul) 
+ (add) 
+ (sub) 
+ (mul) 
  (div) 
  (less) 
  (more) 
@@ -54,36 +55,40 @@ B = INP (INPUT must be 4 bytes signed integer only)
 
 **Keywords:**
 
-**IF****** The IF must be followed by a logical condition, which, if true, will execute the code following the condition (the end of the line). If the condition is not true, the execution moves to the next line.
+**IF** 
+The IF must be followed by a logical condition, which, if true, will execute the code following the condition (the end of the line). If the condition is not true, the execution moves to the next line.
 
 Syntax:** IF B > A.0 PRN B**
 
-No THEN and no ELSE! Only the IF keyword, the CONDITION and the instruction ( PRN or JMP or ASSIGN). Red, blue, black:
+No THEN and no ELSE! 
+Only the IF keyword, the CONDITION and the instruction ( PRN or JMP or ASSIGN).
 
 IF B > A.0 PRN B
 
-**JMP** Jump instruction that must be followed by a tag that the interpreter detected and registered when reading the script. The return address (line) stored in the variable named 'stack'. Lol
+**JMP** 
+Jump instruction that must be followed by a tag that the interpreter detected and registered when reading the script. The return address (line) stored in the variable named 'stack'. Lol
 
 Syntax: **JMP .LABEL_ONE**
 
-**RET** This is the additional (RETurn) statement for labels. If this is included in one of the lines after the label, then after the RET line, the code execution returns to the line+1 where it was before jumping to the label. Thus, lines written between a LABEL and a RET instruction become a subroutine.
-
+**RET** 
+This is the additional (RETurn) statement for labels. If this is included in one of the lines after the label, then after the RET line, the code execution returns to the line+1 where it was before jumping to the label. Thus, lines written between a LABEL and a RET instruction become a subroutine.
+****
 Syntax:
 
 .SUB_LABEL 
 B = B * 2 
-IF B = C 
-PRN S 
+IF B = C PRN S 
 IF B > C PRN T 
 RET
 
-**PRN** Print statement, which must be followed by at least one variable identifier. The PRN instruction cannot directly print numbers or characters, only values ​​of variables. It interprets the values ​​of the S..Z variables as ASCII code and prints the character corresponding to the code. For example:
+**PRN** Print statement, which must be followed by at least one variable identifier. The PRN instruction cannot directly print numbers or characters, only values ​​of variables. It interprets the values ​​of the **S..Z** variables as ASCII code and prints the character corresponding to the code. For example:
 
-T = 65 PRN T
+T = 65 
+PRN T
 
 Output: A
 
-NOP No code execution occurs. The purpose of the instruction is to separate two labels below one another so that they do not end up at the same address.
+**NOP** No code execution occurs. The purpose of the instruction is to separate two labels below one another so that they do not end up at the same address.
 
 **INP** Reads a signed integer value from the keyboard.
 
