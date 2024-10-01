@@ -124,8 +124,7 @@ JMP .BEGIN
  JMP .LOOP  
 .END  
   
-**Here is the oputput (with TRC):
-**
+**Here is the oputput (with TRC):**  
 
 1  
 2 2  
