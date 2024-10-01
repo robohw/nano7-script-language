@@ -26,8 +26,7 @@ By default, this maximum value is 100, and the largest number that can be genera
 
 "**S**".."**Z**" stores a single 1-byte integer value. when printing, the PRN instruction evaluates the stored value as an ASCII code.
 
-**Arithmetic and logical operators:
-**
+**Arithmetic and logical operators:**  
 
  (add) 
  (sub) 
