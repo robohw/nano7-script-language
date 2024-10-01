@@ -56,10 +56,11 @@ B = INP (INPUT must be 4 bytes signed integer only)
 
 **Keywords:**
 
-**IF** 
+**IF**   
 The IF must be followed by a logical condition, which, if true, will execute the code following the condition (the end of the line). If the condition is not true, the execution moves to the next line.
 
-Syntax:** IF B > A.0 PRN B**
+Syntax:  
+** IF B > A.0 PRN B**
 
 No THEN and no ELSE! 
 Only the IF keyword, the CONDITION and the instruction ( PRN or JMP or ASSIGN).
