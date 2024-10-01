@@ -86,7 +86,7 @@ RET
 **PRN**  
 Print statement, which must be followed by at least one variable identifier. The PRN instruction cannot directly print numbers or characters, only values ​​of variables. It interprets the values ​​of the **S..Z** variables as ASCII code and prints the character corresponding to the code. For example:
 
-T = 65 
+T = 65   
 PRN T
 
 Output: A
