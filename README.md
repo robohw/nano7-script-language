@@ -34,24 +34,24 @@ By default, this maximum value is 100, and the largest number that can be genera
  (more) 
  (equal)
 
-**Var assignment:** 
+**Var assignment:**  
 
-The operator of assignment is "**=**". 
+The operator of assignment is "**=**".  
 Syntax:
 
-B = number (integer) 
+B = number (integer)  
 B = 12
 
-B = variable 
+B = variable  
 B = C
 
-B = variable arithmetic_op number 
-B = C + 12
+B = variable arithmetic_op number  
+B = C + 12  
 
-B = variable arithmetic_op variable 
-B = C - D
+B = variable arithmetic_op variable  
+B = C - D  
 
-B = INP (INPUT must be 4 bytes signed integer only)
+B = INP (INPUT must be 4 bytes signed integer only)  
 
 **Keywords:**
 
@@ -65,36 +65,42 @@ Only the IF keyword, the CONDITION and the instruction ( PRN or JMP or ASSIGN).
 
 IF B > A.0 PRN B
 
-**JMP** 
+**JMP**  
 Jump instruction that must be followed by a tag that the interpreter detected and registered when reading the script. The return address (line) stored in the variable named 'stack'. Lol
 
-Syntax: **JMP .LABEL_ONE**
+Syntax: **JMP .LABEL_ONE**  
 
-**RET** 
+**RET**  
 This is the additional (RETurn) statement for labels. If this is included in one of the lines after the label, then after the RET line, the code execution returns to the line+1 where it was before jumping to the label. Thus, lines written between a LABEL and a RET instruction become a subroutine.
 ****
 Syntax:
 
-.SUB_LABEL 
-B = B * 2 
-IF B = C PRN S 
-IF B > C PRN T 
-RET
+.SUB_LABEL  
+B = B * 2  
+IF B = C PRN S  
+IF B > C PRN T  
+RET  
 
-**PRN** Print statement, which must be followed by at least one variable identifier. The PRN instruction cannot directly print numbers or characters, only values ​​of variables. It interprets the values ​​of the **S..Z** variables as ASCII code and prints the character corresponding to the code. For example:
+**PRN**  
+Print statement, which must be followed by at least one variable identifier. The PRN instruction cannot directly print numbers or characters, only values ​​of variables. It interprets the values ​​of the **S..Z** variables as ASCII code and prints the character corresponding to the code. For example:
 
 T = 65 
 PRN T
 
 Output: A
 
-**NOP** No code execution occurs. The purpose of the instruction is to separate two labels below one another so that they do not end up at the same address.
+**NOP**  
+No code execution occurs. The purpose of the instruction is to separate two labels below one another so that they do not end up at the same address.
 
-**INP** Reads a signed integer value from the keyboard.
+**INP**  
+Reads a signed integer value from the keyboard.
 
 The syntax:
 
-B = INP or A.4 = INP or A.B = INP
+B = INP or 
+A.4 = INP or 
+A.B = INP
+
 
 **The classical structure of a nano7 script:
 **
@@ -121,39 +127,39 @@ JMP .BEGIN
 **Here is the oputput (with TRC):
 **
 
-1 
-2 2 
-3 3 
-4 4 
-5 
-
--------------- (32 lines done) - Code:
-
-1 JMP .BEGIN 
-2 IF B < C B = B + 1 
-3 PRN B S 
-4 RET 
-5 B = 1 
-6 C = 5 
-7 S = 32 
-8 T = 10 
-9 PRN B T 
-10 JMP .SUB_INC 
-11 IF B = C JMP .END 
-12 JMP .LOOP
-
--------------- Label(s): 
-.SUB_INC 2 
-.BEGIN  5 
-.LOOP 9 
-.END 13
-
--------------- Vars (B..Z): 
-B 5 
-C 5 
-R 100 
-S 32 
-T 10 
--------------- Array element(s): 
+1  
+2 2  
+3 3  
+4 4  
+5  
+  
+-------------- (32 lines done) - Code:  
+  
+1 JMP .BEGIN  
+2 IF B < C B = B + 1  
+3 PRN B S  
+4 RET  
+5 B = 1  
+6 C = 5  
+7 S = 32  
+8 T = 10  
+9 PRN B T  
+10 JMP .SUB_INC  
+11 IF B = C JMP .END  
+12 JMP .LOOP  
+  
+-------------- Label(s):  
+.SUB_INC 2  
+.BEGIN  5  
+.LOOP 9  
+.END 13  
+  
+-------------- Vars (B..Z):  
+B 5  
+C 5  
+R 100  
+S 32  
+T 10  
+-------------- Array element(s):  
 A.0 = 0
 
