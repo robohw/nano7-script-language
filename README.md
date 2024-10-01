@@ -5,15 +5,16 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 
 "**A**" is an array expandable up to 32k, the elements of which can contain 4-byte signed integers. By default, only the first element (A.0) exists.
 
-Syntax: **A.0 = 16** or
+Syntax:   
+**A.0 = 16** or 
+  
+**A.9 = 16** or  
+  
+B = 9  
+**A.B = 16** or 
 
-**A.9 = 16** or
-
-B = 9 
-**A.B = 16** or
-
-B = 9 
-C = 2 
+B = 9  
+C = 2  
 **A.B = C * 8**
 
 "**B**".."**Q**" are used to store 4-byte signed integer values.
