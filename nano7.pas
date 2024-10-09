@@ -17,7 +17,7 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
    tokens : array of string;     // TEMP of the actual line content, in tokenised form
    Labels : array of TLabel;     // list of labels
    Vars : array['B'..'Z'] of LongInt;
-   Ar     : array of LongInt;    // builtin longint array with 64k capacity
+   Ar     : array of LongInt;    // builtin longint array with 32k capacity
    LineNum: Word = 0;            // program counter 
    Stack  : Word = 0;            // pseudo stack (for RET(urn))
    Trace  : Boolean = False;
