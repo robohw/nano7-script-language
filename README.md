@@ -1,6 +1,6 @@
 ![](nano7.gif)
 
-The **nano7** language is a simple, embeddable,  procedural language (interpreter). The language has only global variables and integer arithmetic. Nano7 uses built-in variables. 
+The **nano7** language is a simple, embeddable,  procedural language (and it's interpreter). The language has only global variables and integer arithmetic. Nano7 uses built-in variables. 
 Their scope is global. Variables are identified by the English ABC letters ("A","B","C" .."Z").
 
 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
@@ -121,7 +121,8 @@ JMP .BEGIN
 .LOOP   
  JMP .SUB_INC   
  IF B = C JMP .END  
- JMP .LOOP  
+ JMP .LOOP
+  
 .END  
   
 **Here is the oputput (with TRC):**  
