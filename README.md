@@ -55,7 +55,8 @@ B = C - D
 
 B = INP (INPUT must be 4 bytes signed integer only)  
 
-**Keywords:**
+**Keywords:** IF, JMP (jump), RET(urn), PRN (print), NOP, INP(ut), TRC (trace)
+
 
 **IF**   
 The IF must be followed by a logical condition, which, if true, will execute the code following the condition (the end of the line). If the condition is not true, the execution moves to the next line.
@@ -101,10 +102,23 @@ The syntax:
 B = INP or   
 A.4 = INP or   
 A.B = INP  
-  
+
+------------------------------------------------------------------
+The comment must begin with ; char 
+
+Warning! 
+In the nano7 scripts, must be one (or more) space between two language elements. 
+In the nano7 scripts only the single expressions allowed: one math (and/or) one logic operator in one code line. 
+The nano7 script language does not use parentheses or brackets. 
+The legal chars: A..Z, 0..9, SPACE, DOT, < = > + - * / % _
+and nothing more.  
+
+Don't forget! 
+The nano7 made for educational purposes.
 
 **The classical structure of a nano7 script:**  
 
+TRC
 JMP .BEGIN
 
 .SUB_INC   
