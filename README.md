@@ -31,7 +31,8 @@ By default, this maximum value is 100, and the largest number that can be genera
  (add) 
  (sub) 
  (mul) 
- (div) (mod)
+ (div) 
+ (mod) - 
  (less) 
  (more) 
  (equal)
