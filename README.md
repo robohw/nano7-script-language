@@ -140,7 +140,7 @@ JMP .BEGIN
   
 .END  
   
-**Here is the oputput (with TRC):**  
+**Here is the output (with TRC):**  
 
 1  
 2 2  
