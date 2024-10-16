@@ -1,6 +1,7 @@
-program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP  
-{$MODE FPC}    // RET implanted, GetVal speedUp, Arr.limit = 32767, project closed. 
- 
+program nano7; // 24.09.25 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP  
+{$MODE FPC}    // RET implanted, GetVal speedUp, Arr.limit = 32767, 
+               // ASCII SPACE (32) and LineFeed (10) Preset (~ 240 line)
+               // project closed.  
  uses SysUtils;      
  type                            // Proto, for LABELs. 
    TLabel = record
@@ -14,15 +15,15 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
 
  var {global}
    Code   : array of string;     // TEMP of the runnable nano7 code. Max. 65535 lines
-   tokens : array of string;     // TEMP of the actual line content, in tokenised form
+   tokens : array of string;     // TEMP of the running line content, in tokenised form
    Labels : array of TLabel;     // list of labels
    Vars : array['B'..'Z'] of LongInt;
    Ar     : array of LongInt;    // builtin longint array with 32k capacity
    LineNum: Word = 0;            // program counter 
    Stack  : Word = 0;            // pseudo stack (for RET(urn))
-   Trace  : Boolean = False;
-   Counter: LongInt = 0;
-   InFile,OutFile : text;
+   Trace  : Boolean = False;     // Tracer, default OFF 
+   Counter: LongInt = 0;         // loop counter for ENDLESS loops 
+   InFile,OutFile : text;        // incoming (nano7 script) outgoing (result file)
  
  procedure Error(const Msg: string);
  begin
@@ -33,7 +34,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  procedure Split(inStr: string);
- var i, Index: byte;
+ var
+   i, Index: byte;
  begin
  Index := 0;
  SetLength(Tokens, 1);
@@ -54,7 +56,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  procedure SetLabelAddr(const Name: string; Addr: Word);
- var i: Integer;
+ var
+   i: Integer;
  begin
    for i := 2 to length(name) do
      if not (name[i] in ['A'..'Z','_']) then error('illegal char in LABEL '+name);   
@@ -66,7 +69,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  function GetLabelAddr(const Name: string): Word;
- var i: Integer;
+ var
+   i: Integer;
  begin
    if(Name[1] <> '.') then Error('missing dot (label)');
    GetLabelAddr := 0;  
@@ -75,7 +79,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  function ExtractIndex(s: string): word;  // for PRN instruction
- var i: Word;
+ var
+  i: Word;
  begin
   s := Copy(s, 3, Length(s) - 2);  
   if (Length(s) = 1) and (s[1] in ['B'..'Z']) then i := Vars[s[1]] else i := StrToIntDef(s, -1);  
@@ -84,7 +89,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  function GetIndex(s: string): word;
- var i: Word;
+ var
+   i: Word;
  begin
    i := ExtractIndex(s);
    if (i >= Length(Ar)) then SetLength(Ar, i + 1); 
@@ -92,7 +98,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  function GetVal(n: Byte): LongInt;
- var i: LongInt;
+ var
+   i: LongInt;
  begin   
    if (tokens[n][1]in['B'..'Z'])and (Length(tokens[n])>1)then Error('Invalid ID: '+tokens[n]);
    if (tokens[n][1] in ['-','0'..'9']) then
@@ -124,7 +131,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end; 
 
  function Input(n: byte): longint;
- var inStr: string;
+ var
+ inStr: string;
  begin
    repeat
      write(tokens[n],': ');
@@ -134,8 +142,9 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  procedure SetVal(n: Byte);
- var value: LongInt;
-         i: Integer;
+ var
+  value: LongInt;
+  i: Integer;
  begin
   if not (tokens[n][1]   in ['A'..'Z'])    then Error('Invalid var ID: ' + tokens[n]);
   if not (tokens[n+1][1] in ['=','+','-']) then Error('syntax error: ' + tokens[n+1]);
@@ -220,14 +229,15 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
 
  procedure LoadProgram;
- var i: byte;
-  Line: string;
+ var
+   i: byte;
+   Line: string;
  begin
    for i:= Ord('B') to Ord('Z') do vars[Chr(i)]:= -2147483648;
    Randomize;
    Vars['R'] := 100; // Range for random numbers: 0..99
    Vars['S'] := 32;  // ascii space preset (for print)
-   Vars['T'] := 10;  // ascii newline preset (for print)
+   Vars['T'] := 10;  // ascii linefeed preset (for print)
    
    SetLength(Code, 1);
    SetLength(Labels, 0);
@@ -252,7 +262,8 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
  end;
  
  procedure PrintState;
- var i: Integer;
+ var
+   i: Integer;
  begin
    Writeln(OutFile);
    Writeln(OutFile,'-------------- (', Counter, ' lines done) - Code:');
@@ -280,7 +291,9 @@ program nano7; // 24.09.30 v1.2 FIN - KeyWords: INP, IF, JMP, RET, PRN, TRC, NOP
     assign(OutFile,paramstr(1)+'.out');
     rewrite(OutFile);  
    end
+   
    else 
+   
     begin
     writeln(' no input file. Try: nano7.exe your_script');
     halt(1); 

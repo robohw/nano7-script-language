@@ -1,4 +1,4 @@
-![](nano7.gif)
+﻿![](nano7.gif)
 
 The **nano7** language is a simple, embeddable,  procedural language (and it's interpreter). The language has only global variables and integer arithmetic. Nano7 uses built-in variables. 
 Their scope is global. Variables are identified by the English ABC letters ("A","B","C" .."Z").
@@ -31,7 +31,7 @@ By default, this maximum value is 100, and the largest number that can be genera
  (add) 
  (sub) 
  (mul) 
- (div) 
+ (div) (mod)
  (less) 
  (more) 
  (equal)

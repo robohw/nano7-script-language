@@ -1,0 +1,18 @@
+.START
+
+S = 72               ; 'H' ASCII 
+T = 101              ; 'e' ASCII 
+U = 108              ; 'l' ASCII 
+V = 111              ; 'o' ASCII 
+
+PRN S T U U V        ; "Hello" 
+
+.LAB
+W = 87               ; 'W'  ASCII 
+X = 111              ; 'o'  ASCII 
+Y = 114              ; 'r'  ASCII 
+Z = 100              ; 'd'  ASCII 
+
+S = 32 
+PRN S W X Y U Z        ; "World" 
+
